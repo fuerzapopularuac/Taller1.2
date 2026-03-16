@@ -1,52 +1,213 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página de Prueba</title>
-    <style>
-        body {
-            font-family: sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f2f5;
-        }
-        .card {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-        h1 { color: #007bff; }
-        p { color: #555; }
-        button {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover { background-color: #0056b3; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infografía - Modelos de Machine Learning Titanic</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+body{
+font-family:'Poppins',sans-serif;
+margin:0;
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+color:white;
+}
+header{
+text-align:center;
+padding:40px 20px;
+}
+header h1{
+font-size:42px;
+margin-bottom:10px;
+}
+section{
+padding:40px;
+max-width:1100px;
+margin:auto;
+}
+.card{
+background:rgba(255,255,255,0.08);
+padding:25px;
+border-radius:15px;
+margin-bottom:30px;
+box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+.tag{
+display:inline-block;
+background:#00c9ff;
+color:black;
+padding:6px 12px;
+border-radius:20px;
+font-size:12px;
+margin-bottom:10px;
+}
+h2{
+margin-top:0;
+}
+footer{
+text-align:center;
+padding:30px;
+font-size:14px;
+opacity:0.8;
+}
+</style>
 </head>
+
 <body>
 
-    <div class="card">
-        <h1>¡Hola! Esto es una prueba</h1>
-        <p>Si puedes ver esto, tu archivo HTML está funcionando correctamente.</p>
-        <button onclick="saludar()">Haz clic aquí</button>
-    </div>
+<header>
+<h1>Machine Learning en el Dataset Titanic</h1>
+<p>Comparación de Modelos: Árbol de Decisión vs Random Forest</p>
+</header>
 
-    <script>
-        function saludar() {
-            alert('¡Funciona perfectamente!');
-        }
-    </script>
+<section class="card">
+<h2>Equipo de Trabajo - Grupo Fuerza Popular</h2>
+<p>Este proyecto fue desarrollado por el grupo <b>Fuerza Popular</b> como parte del análisis de modelos de clasificación utilizando Machine Learning.</p>
+<ul>
+<li>Huarcaya Cabrera Yajaira — 100%</li>
+<li>La Torre Velazco Anthony Jareth — 100%</li>
+<li>Tresierra Zamora Diego Andres (SM) — 100%</li>
+</ul>
+</section>
+
+<section class="card">
+<h2>Problema Analizado</h2>
+<p>El dataset Titanic contiene información sobre los pasajeros que viajaban en el barco Titanic. El objetivo del proyecto es predecir si un pasajero sobrevivió o no al accidente utilizando técnicas de Machine Learning.</p>
+
+<p>Este problema corresponde a un modelo de <b>clasificación binaria</b>.</p>
+
+<div class="grid">
+<div>
+<span class="tag">Variable objetivo</span>
+<p><b>Survived</b><br>1 = Sobrevivió<br>0 = No sobrevivió</p>
+</div>
+
+<div>
+<span class="tag">Variables importantes</span>
+<p>Sexo, Edad, Clase del pasajero, Precio del ticket, Puerto de embarque.</p>
+</div>
+</div>
+</section>
+
+<section class="card">
+<h2>Preprocesamiento de Datos</h2>
+<div class="grid">
+<div>
+<h3>Manejo de valores faltantes</h3>
+<p>Se reemplazaron valores faltantes en la variable <b>Age</b> utilizando la media y en <b>Embarked</b> utilizando el valor más frecuente.</p>
+</div>
+
+<div>
+<h3>Eliminación de columnas</h3>
+<p>Se eliminaron columnas irrelevantes como PassengerId, Name, Ticket y Cabin.</p>
+</div>
+
+<div>
+<h3>Codificación de datos</h3>
+<p>Las variables categóricas como Sex y Embarked se transformaron utilizando One-Hot Encoding.</p>
+</div>
+
+<div>
+<h3>División del dataset</h3>
+<p>Los datos fueron divididos en 80% entrenamiento y 20% prueba.</p>
+</div>
+</div>
+</section>
+
+<section class="card">
+<h2>Modelo 1: Árbol de Decisión</h2>
+<p>El Árbol de Decisión clasifica los datos mediante una estructura jerárquica de reglas. Cada nodo representa una decisión basada en una característica del dataset.</p>
+
+<div class="grid">
+<div>
+<h3>Ventajas</h3>
+<ul>
+<li>Fácil de interpretar</li>
+<li>Visualización clara de decisiones</li>
+<li>Rápido de entrenar</li>
+</ul>
+</div>
+
+<div>
+<h3>Limitaciones</h3>
+<ul>
+<li>Puede sufrir overfitting</li>
+<li>Sensible a cambios en los datos</li>
+</ul>
+</div>
+</div>
+</section>
+
+<section class="card">
+<h2>Modelo 2: Random Forest</h2>
+<p>Random Forest es un modelo de ensamble que combina múltiples árboles de decisión. Cada árbol realiza una predicción y el resultado final se obtiene mediante votación.</p>
+
+<div class="grid">
+<div>
+<h3>Ventajas</h3>
+<ul>
+<li>Mayor precisión</li>
+<li>Reduce el overfitting</li>
+<li>Mejor generalización</li>
+</ul>
+</div>
+
+<div>
+<h3>Configuración</h3>
+<ul>
+<li>100 árboles</li>
+<li>Profundidad máxima controlada</li>
+<li>Random State = 42</li>
+</ul>
+</div>
+</div>
+</section>
+
+<section class="card">
+<h2>Métricas de Evaluación</h2>
+<div class="grid">
+<div>
+<h3>Accuracy</h3>
+<p>Mide el porcentaje total de predicciones correctas.</p>
+</div>
+
+<div>
+<h3>Precision</h3>
+<p>Evalúa la exactitud de las predicciones positivas.</p>
+</div>
+
+<div>
+<h3>Recall</h3>
+<p>Mide cuántos sobrevivientes reales fueron detectados correctamente.</p>
+</div>
+
+<div>
+<h3>F1 Score</h3>
+<p>Balance entre Precision y Recall.</p>
+</div>
+
+<div>
+<h3>Curva ROC</h3>
+<p>Compara la tasa de verdaderos positivos y falsos positivos.</p>
+</div>
+</div>
+</section>
+
+<section class="card">
+<h2>Conclusiones</h2>
+<p>Ambos modelos lograron predecir la supervivencia de los pasajeros del Titanic con buen desempeño. Sin embargo, el modelo Random Forest presentó mejores resultados debido a su capacidad de combinar múltiples árboles y reducir errores individuales.</p>
+
+<p>El Árbol de Decisión permite entender fácilmente las reglas de decisión del modelo, mientras que Random Forest proporciona una mayor precisión y estabilidad en las predicciones.</p>
+</section>
+
+<footer>
+Proyecto académico - Machine Learning | Dataset Titanic
+</footer>
 
 </body>
 </html>
